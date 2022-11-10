@@ -1,4 +1,4 @@
-package notesApplication;
+package model;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ public class Note {
 	private final String fileType = ".txt";
 	private String filePath;
 
-	Note(String fileName) {
+	public Note(String fileName) {
 		this.fileName = fileName;
 	}
 
-	Note(String baseFolder, String fileName) {
+	public Note(String baseFolder, String fileName) {
 		this.fileName = fileName;
 		this.baseFolder = baseFolder;
 	}
@@ -47,7 +47,7 @@ public class Note {
 
 	public void setFileBasePath() {
 		setAbsolutePath();
-		this.filePath = this.basePath + "\\" + this.baseFolder;
+		this.filePath = this.basePath +this.baseFolder;
 	}
 
 	public String getFileBasePath() {

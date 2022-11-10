@@ -1,8 +1,11 @@
-package notesApplication;
+package view;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+
+import controller.Operations;
+import model.Note;
 
 public class NoteSetup {
 	private Note note;

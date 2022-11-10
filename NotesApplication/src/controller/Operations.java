@@ -1,4 +1,4 @@
-package notesApplication;
+package controller;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,7 +31,7 @@ public class Operations {
 
 	public void doRead(String filePath, String fileName) throws FileNotFoundException {
 		int eachChar;
-		filePath = (filePath+"\\"+fileName+".txt");
+		filePath = (filePath + "\\" + fileName + ".txt");
 		try {
 			FileReader reader = new FileReader(filePath);
 			while ((eachChar = reader.read()) != -1) {
@@ -44,9 +44,10 @@ public class Operations {
 		}
 	}
 
-	public void doWrite(String filePath,String write) {
+	public void doWrite(String filePath, String write) {
+		FileWriter writer = null;
 		try {
-			FileWriter writer = new FileWriter(filePath);
+			writer = new FileWriter(filePath);
 			writer.write(write);
 			writer.close();
 			System.out.println("Successfully wrote in to the new Note created !\n");
@@ -56,9 +57,9 @@ public class Operations {
 		}
 	}
 
-	public void deleteFile(String filePath , String fileName) {
+	public void deleteFile(String filePath, String fileName) {
 		if (isFileExist(filePath, fileName) == true) {
-			filePath =filePath + "\\" + fileName + ".txt";
+			filePath = filePath + "\\" + fileName + ".txt";
 			File file = new File(filePath);
 			System.out.println("After deletion .. you are not able to recover the note in the folder\n");
 			if (file.delete())
@@ -88,7 +89,7 @@ public class Operations {
 		}
 		return false;
 	}
-	
+
 	public String[] viewAll(String FilePath) {
 		File file = new File(FilePath);
 		String[] fileList = file.list(new FilenameFilter() {
@@ -98,7 +99,7 @@ public class Operations {
 		});
 		return fileList;
 	}
-	
+
 	public void viewInfo(String filePath) {
 		File file = new File(filePath);
 		BasicFileAttributes attr;
@@ -112,38 +113,5 @@ public class Operations {
 			e.printStackTrace();
 		}
 	}
-
-//	public static void deleteFolder(String filePath) {
-//		
-//		if (isFolderExist(filePath, folderName) == true) {
-//			filePath = Note.getFolderBasePath() + "\\" + folderName;
-//			File file = new File(filePath);
-//			System.out.println("After deletion .. you are not able to recover the notes in the folder\n");
-//			if (file.delete())
-//				System.out.println("Successfully deleted !");
-//			else
-//				System.out.println("cannot able to delete ... try again");
-//		} else
-//			System.out.println(folderName + " not found");
-//	}
-
-//	private static boolean isFolderExist(String FilePath, String folderName) {
-//		File file = new File(FilePath);
-//		String[] folderList = file.list(new FilenameFilter() {
-//			public boolean accept(File dir, String name) {
-//				return true;
-//			}
-//		});
-//
-//		folderName = (folderName + ".txt").strip();
-//		if (folderList != null) {
-//			for (String nameOfFolder : folderList) {
-//				if (nameOfFolder.equals(folderName)) {
-//					return true;
-//				}
-//			}
-//		}
-//		return false;
-//	}
 
 }

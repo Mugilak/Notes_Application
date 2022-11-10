@@ -1,4 +1,4 @@
-package notesApplication;
+package view;
 
 import java.io.IOException;
 
